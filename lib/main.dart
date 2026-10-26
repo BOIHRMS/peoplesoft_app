@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:screen_protector/screen_protector.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -12,8 +12,16 @@ const Duration kRelockAfter = Duration(seconds: 60);
 
 final _auth = LocalAuthentication();
 
-void main() {
+//void main() {
+//  WidgetsFlutterBinding.ensureInitialized();
+//  runApp(const PeopleSoftApp());
+//}
+
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await
+  ScreenProtector.preventScreenshotOn();
+  await ScreenProtector.protectDataLeakageWithBlur();
   runApp(const PeopleSoftApp());
 }
 

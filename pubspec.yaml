@@ -1,7 +1,7 @@
 name: peoplesoft_app
 description: Secure PeopleSoft launcher with email registration and biometric login.
 publish_to: 'none'
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
   webview_flutter: ^4.10.0
   local_auth: ^2.3.0
+  screen_protector: ^1.5.3
 dev_dependencies:
   flutter_test:
     sdk: flutter
