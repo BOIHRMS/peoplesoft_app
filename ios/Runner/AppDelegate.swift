@@ -4,6 +4,7 @@ import Flutter
 @main
 @objc class AppDelegate: FlutterAppDelegate {
   private var blurView: UIVisualEffectView?
+  private let secureField = UITextField()
 
   override func application(
     _ application: UIApplication,
@@ -18,15 +19,18 @@ import Flutter
   // Makes screenshots and recordings come out black
   private func enableScreenProtection() {
     guard let window = self.window else { return }
-    let field = UITextField()
-    field.isSecureTextEntry = true
-    field.isUserInteractionEnabled = false
-    field.translatesAutoresizingMaskIntoConstraints = false
-    window.addSubview(field)
-    field.centerYAnchor.constraint(equalTo: window.centerYAnchor).isActive = true
-    field.centerXAnchor.constraint(equalTo: window.centerXAnchor).isActive = true
-    window.layer.superlayer?.addSublayer(field.layer)
-    field.layer.sublayers?.first?.addSublayer(window.layer)
+    secureField.isSecureTextEntry = true
+    secureField.isUserInteractionEnabled = false
+    secureField.translatesAutoresizingMaskIntoConstraints = false
+    window.addSubview(secureField)
+    secureField.centerYAnchor.constraint(equalTo: window.centerYAnchor).isActive = true
+    secureField.centerXAnchor.constraint(equalTo: window.centerXAnchor).isActive = true
+    window.layer.superlayer?.addSublayer(secureField.layer)
+    if #available(iOS 17.0, *) {
+      secureField.layer.sublayers?.first?.addSublayer(window.layer)
+    } else {
+      secureField.layer.sublayers?.last?.addSublayer(window.layer)
+    }
   }
 
   // Blurs the app in the app switcher
