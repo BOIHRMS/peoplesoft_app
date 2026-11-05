@@ -66,5 +66,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	    <key>NSFaceIDUsageDescription</key>
+        <string>Face ID is used to securely unlock the BOI HRMS app.</string>
 </dict>
 </plist>
